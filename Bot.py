@@ -1,14 +1,13 @@
 import telebot
+import os
 
-# Bot token from Telegram
-TOKEN = "7648930587:AAHcDBywHNRXhYQmVSc9HIWN4dE52Ekczsg"
+# Environment variable se token lena — secure method
+TOKEN = os.environ.get("BOT_TOKEN")
 
 bot = telebot.TeleBot(TOKEN)
 
-# Start command handler
 @bot.message_handler(commands=['start'])
 def start_handler(message):
     bot.reply_to(message, "Hello! Bot is working perfectly.")
 
-# Keep the bot running
 bot.polling(none_stop=True)
